@@ -19,25 +19,25 @@
 (define-test list-or-atom
   ;; The function LISTP will return true if the input is a list.
   ;; The function ATOM will return true if the input is an atom.
-  (true-or-false? ____ (listp '(1 2 3)))
-  (true-or-false? ____ (atom '(1 2 3)))
-  (true-or-false? ____ (listp '("heres" "some" "strings")))
-  (true-or-false? ____ (atom '("heres" "some" "strings")))
-  (true-or-false? ____ (listp "a string"))
-  (true-or-false? ____ (atom "a string"))
-  (true-or-false? ____ (listp 2))
-  (true-or-false? ____ (atom 2))
-  (true-or-false? ____ (listp '(("first" "list") ("second" "list"))))
-  (true-or-false? ____ (atom '(("first" "list") ("second" "list")))))
+  (true-or-false? T (listp '(1 2 3)))
+  (true-or-false? NIL (atom '(1 2 3)))
+  (true-or-false? T (listp '("heres" "some" "strings")))
+  (true-or-false? NIL (atom '("heres" "some" "strings")))
+  (true-or-false? NIL (listp "a string"))
+  (true-or-false? T (atom "a string"))
+  (true-or-false? NIL (listp 2))
+  (true-or-false? T (atom 2))
+  (true-or-false? T (listp '(("first" "list") ("second" "list"))))
+  (true-or-false? NIL (atom '(("first" "list") ("second" "list")))))
 
 (define-test the-duality-of-nil
   ;; The empty list, NIL, is unique in that it is both a list and an atom.
-  (true-or-false? ____ (listp nil))
-  (true-or-false? ____ (atom nil)))
+  (true-or-false? T (listp nil))
+  (true-or-false? T (atom nil)))
 
 (define-test keywords
   ;; Symbols like :HELLO or :LIKE-THIS are keywords. They are treated
   ;; differently in Lisp: they are constants that always evaluate to themselves.
-  (true-or-false? ____ (equal :this-is-a-keyword :this-is-a-keyword))
-  (true-or-false? ____ (equal :this-is-a-keyword ':this-is-a-keyword))
-  (true-or-false? ____ (equal :this-is-a-keyword :this-is-also-a-keyword)))
+  (true-or-false? T (equal :this-is-a-keyword :this-is-a-keyword))
+  (true-or-false? T (equal :this-is-a-keyword ':this-is-a-keyword))
+  (true-or-false? NIL (equal :this-is-a-keyword :this-is-also-a-keyword)))
